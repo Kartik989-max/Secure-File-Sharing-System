@@ -158,6 +158,16 @@ To deploy the application to production, follow these steps:
 
 ---
 
+![Image](https://github.com/user-attachments/assets/d32181ea-fca4-4394-a0df-4b48a9446d5b)
+![Image](https://github.com/user-attachments/assets/a5e70b2c-4e9b-4cf2-9c3b-80616dc779e5)
+![Image](https://github.com/user-attachments/assets/4707af9f-513b-4f79-8cc9-d321bfad976b)
+![Image](https://github.com/user-attachments/assets/e7bfdda8-0e47-457e-bae9-bb31995714d7)
+![Image](https://github.com/user-attachments/assets/96ec7a02-8725-47da-82d4-3d197482296f)
+
+
+---
+
+
 # Author
 
 **Kartik Bhatnagar**  
