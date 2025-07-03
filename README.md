@@ -2,6 +2,21 @@
 
 This project is a secure file-sharing system built with FastAPI. It supports two types of users — Ops and Clients — with different roles and permissions for uploading and downloading files. The goal was to implement authentication, role-based access, secure file handling, and email verification using encrypted links.
 
+
+## Technologies Used
+
+- **Python 3.8+**
+- **FastAPI** – Web framework for building APIs
+- **Uvicorn** – ASGI server for running FastAPI
+- **Fernet (Cryptography)** – For secure encryption/decryption of tokens
+- **JWT (JSON Web Tokens)** – Authentication and access control
+- **Passlib (bcrypt)** – Password hashing and verification
+- **Pydantic** – Data validation and serialization
+- **Python’s pathlib and os modules** – File handling
+- **Postman** – API testing and collection sharing
+- **dotenv** – Managing environment variables
+- **In-memory mock database** – Python lists (users and files)
+
 ## Features
 
 ### Ops User
