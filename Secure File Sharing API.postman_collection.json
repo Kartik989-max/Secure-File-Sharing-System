@@ -1,0 +1,696 @@
+{
+	"info": {
+		"_postman_id": "444a1c11-95a5-4e1f-9006-7509c28ecdac",
+		"name": "Secure File Sharing API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29783373"
+	},
+	"item": [
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": " Client Signup",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Kartik One\",\r\n  \"email\": \"Kartik@example.com\",\r\n  \"password\": \"kartik123\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/client/signup",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"client",
+								"signup"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Client Signup",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Kartik One\",\r\n  \"email\": \"Kartik@example.com\",\r\n  \"password\": \"kartik123\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/client/signup",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"client",
+										"signup"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Thu, 03 Jul 2025 07:03:28 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "210"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Verify email\",\n    \"verify_url\": \"http://localhost:8000/client/verify-email?token=gAAAAABoZitBAyDJ4dURD-fF7YmnIe86yIQSEyMelkpcl_PsqbsTNck64gIxNqwP0JUA-6fQp5niOqyWDJVv-VpGdCfWJ_gQuO15RgUWlAhBcsBmaDwGTZQ=\"\n}"
+						}
+					]
+				},
+				{
+					"name": "verifying clinent email signup",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/client/verify-email?token=gAAAAABoZitBAyDJ4dURD-fF7YmnIe86yIQSEyMelkpcl_PsqbsTNck64gIxNqwP0JUA-6fQp5niOqyWDJVv-VpGdCfWJ_gQuO15RgUWlAhBcsBmaDwGTZQ=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"client",
+								"verify-email"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "gAAAAABoZitBAyDJ4dURD-fF7YmnIe86yIQSEyMelkpcl_PsqbsTNck64gIxNqwP0JUA-6fQp5niOqyWDJVv-VpGdCfWJ_gQuO15RgUWlAhBcsBmaDwGTZQ="
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "verifying clinent email signup",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/client/verify-email?token=gAAAAABoZitBAyDJ4dURD-fF7YmnIe86yIQSEyMelkpcl_PsqbsTNck64gIxNqwP0JUA-6fQp5niOqyWDJVv-VpGdCfWJ_gQuO15RgUWlAhBcsBmaDwGTZQ=",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"client",
+										"verify-email"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "gAAAAABoZitBAyDJ4dURD-fF7YmnIe86yIQSEyMelkpcl_PsqbsTNck64gIxNqwP0JUA-6fQp5niOqyWDJVv-VpGdCfWJ_gQuO15RgUWlAhBcsBmaDwGTZQ="
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Thu, 03 Jul 2025 07:23:35 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "41"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Email verified successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "List Files",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJLYXJ0aWtAZXhhbXBsZS5jb20iLCJyb2xlIjoiY2xpZW50IiwiZXhwIjoxNzUxNTQ4MzcwfQ.JV3kB_PQU55jiPi7I8gUxLN3jWPqRRMHNg8ggjKM9nM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/client/files",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"client",
+								"files"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/client/files",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"client",
+										"files"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Thu, 03 Jul 2025 07:16:54 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "2"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						},
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/client/files",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"client",
+										"files"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Thu, 03 Jul 2025 07:23:12 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "209"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"403d400b-68d5-4009-a070-d3deecc339e3\",\n        \"name\": \"Coding Shortlisted - DeltaX.xlsx\",\n        \"path\": \"uploads\\\\403d400b-68d5-4009-a070-d3deecc339e3_Coding Shortlisted - DeltaX.xlsx\",\n        \"uploaded_by\": \"ops@example.com\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Client Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "Kartik@example.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "kartik123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "Kartik@example.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "kartik123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Thu, 03 Jul 2025 07:12:49 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "204"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJLYXJ0aWtAZXhhbXBsZS5jb20iLCJyb2xlIjoiY2xpZW50IiwiZXhwIjoxNzUxNTQ4MzcwfQ.JV3kB_PQU55jiPi7I8gUxLN3jWPqRRMHNg8ggjKM9nM\",\n    \"token_type\": \"bearer\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Download Link",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJLYXJ0aWtAZXhhbXBsZS5jb20iLCJyb2xlIjoiY2xpZW50IiwiZXhwIjoxNzUxNTQ5MTAzfQ.qrAzj4hTbIWYC0N0UowpvHfhXI7CiPUTOsAfUuQS190",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/client/download-link/403d400b-68d5-4009-a070-d3deecc339e3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"client",
+								"download-link",
+								"403d400b-68d5-4009-a070-d3deecc339e3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/client/download-link/403d400b-68d5-4009-a070-d3deecc339e3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"client",
+										"download-link",
+										"403d400b-68d5-4009-a070-d3deecc339e3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Thu, 03 Jul 2025 07:25:18 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "216"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"download-link\": \"http://localhost:8000/download-file/gAAAAABoZjBebtdYvSpKUSEPSLCIrgWEvU93pAIasUFcoz6biwyy6mhubYFPPeXnpUwievJCihJU5S8Q37um-knTx3BWuR6_JvAlalW2b4iAcJcw5vwMVa8W_sKRz4KpiIv6kNNvBbE_\",\n    \"message\": \"success\"\n}"
+						},
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/client/download-link/403d400b-68d5-4009-a070-d3deecc339e3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"client",
+										"download-link",
+										"403d400b-68d5-4009-a070-d3deecc339e3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Thu, 03 Jul 2025 07:25:18 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "216"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"download-link\": \"http://localhost:8000/download-file/gAAAAABoZjBebtdYvSpKUSEPSLCIrgWEvU93pAIasUFcoz6biwyy6mhubYFPPeXnpUwievJCihJU5S8Q37um-knTx3BWuR6_JvAlalW2b4iAcJcw5vwMVa8W_sKRz4KpiIv6kNNvBbE_\",\n    \"message\": \"success\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "OPS USER",
+			"item": [
+				{
+					"name": "Ops Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "ops@example.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "ops123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Ops Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "ops@example.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "ops123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Thu, 03 Jul 2025 07:20:45 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "196"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJvcHNAZXhhbXBsZS5jb20iLCJyb2xlIjoib3BzIiwiZXhwIjoxNzUxNTQ4ODQ2fQ.b5S6oefVkM8t00-87ioxSl0wkNvVpfyDMxwNWi8yeIM\",\n    \"token_type\": \"bearer\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Upload File",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJvcHNAZXhhbXBsZS5jb20iLCJyb2xlIjoib3BzIiwiZXhwIjoxNzUxNTQ4ODQ2fQ.b5S6oefVkM8t00-87ioxSl0wkNvVpfyDMxwNWi8yeIM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/bhatn/Downloads/Coding Shortlisted - DeltaX.xlsx"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/ops/upload",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"ops",
+								"upload"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/bhatn/Downloads/Coding Shortlisted - DeltaX.xlsx"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/ops/upload",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"ops",
+										"upload"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Thu, 03 Jul 2025 07:22:36 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "76"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"File uploaded\",\n    \"file_id\": \"403d400b-68d5-4009-a070-d3deecc339e3\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJLYXJ0aWtAZXhhbXBsZS5jb20iLCJyb2xlIjoiY2xpZW50IiwiZXhwIjoxNzUxNTQ4MzcwfQ.JV3kB_PQU55jiPi7I8gUxLN3jWPqRRMHNg8ggjKM9nM",
+			"type": "string"
+		}
+	]
+}
